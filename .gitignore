@@ -14,7 +14,3 @@
 .cxx
 local.properties
 apikeys.properties
-
-# Project exclude paths
-/app/
-/gradle/
