@@ -6,6 +6,10 @@ I named mine **apikeys.properties** although it doesn't really matter what you c
 ```properties
 API_KEY = "Your API key here"
 ```
+You will need to add this file into your .gitignore
+```gitignore
+apikeys.properties
+```
 
 Add this code to your app/build.gradle.kts (Module :app) within the defaultConfig section 
 ```kotlin
