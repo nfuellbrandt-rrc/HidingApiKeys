@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
-val api_key_from_gradle_properties: String? = project.findProperty("api_key") as String?
 android {
     namespace = "com.example.hidingapikeys"
     compileSdk = 35
@@ -39,6 +38,7 @@ android {
             value = apiKey
         )
 
+        val api_key_from_gradle_properties: String? = project.findProperty("api_key") as String?
         buildConfigField(
             type = "String",
             name = "API_KEY_FROM_GRADLE_PROPERTIES",
