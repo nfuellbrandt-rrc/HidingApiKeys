@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+val api_key_from_gradle_properties: String? = project.findProperty("api_key") as String?
 android {
     namespace = "com.example.hidingapikeys"
     compileSdk = 35
@@ -22,20 +23,26 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        // required for both ways
         android.buildFeatures.buildConfig = true
 
-        //load the values from .properties file
+        // load the values from apikeys.properties file
         val keystoreFile = project.rootProject.file("apikeys.properties")
         val properties = Properties()
         properties.load(keystoreFile.inputStream())
 
-        //return empty key in case something goes wrong
+        // return empty key in case something goes wrong
         val apiKey = properties.getProperty("API_KEY") ?: ""
         buildConfigField(
             type = "String",
             name = "API_KEY",
             value = apiKey
         )
+
+        buildConfigField(
+            type = "String",
+            name = "API_KEY_FROM_GRADLE_PROPERTIES",
+            value = "$api_key_from_gradle_properties")
     }
 
     buildTypes {

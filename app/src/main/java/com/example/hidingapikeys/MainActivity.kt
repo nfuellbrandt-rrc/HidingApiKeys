@@ -1,17 +1,15 @@
 package com.example.hidingapikeys
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.hidingapikeys.ui.theme.HidingApiKeysTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,20 +20,15 @@ class MainActivity : ComponentActivity() {
             HidingApiKeysTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     val apiKey = BuildConfig.API_KEY
-                    Greeting(
-                        name = apiKey,
+                    val apiKeyFromGradleProperties = BuildConfig.API_KEY_FROM_GRADLE_PROPERTIES
+                    Column (
                         modifier = Modifier.padding(innerPadding)
-                    )
+                    ) {
+                        Text(text = apiKey)
+                        Text(text = apiKeyFromGradleProperties)
+                    }
                 }
             }
         }
     }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = name,
-        modifier = modifier
-    )
 }
