@@ -1,5 +1,5 @@
 # Hiding API keys
-I have hidden 2 api keys.
+Here are 2 ways to hide an api key.
 ## Method 1: apikeys.properties
 Create a new file at the root of your project
 I named mine **apikeys.properties** although it doesn't really matter what you call it
@@ -29,12 +29,12 @@ If using a different file name replace **apikeys.properties** with that file nam
 
 ## Method 2: gradle.properties
 
-add your API key to your gradle.properties file like so
+Add your API key to your gradle.properties file like so
 ```properties
 API_KEY = "Your API key here"
 ```
 
-and add this code to your app/build.gradle.kts (Module :app)
+Add this code to your app/build.gradle.kts (Module :app)
 ```kotlin
 android.buildFeatures.buildConfig = true
 
@@ -46,7 +46,7 @@ buildConfigField(
 )
 ```
 
-and finally you will need to run this in your console so that git won't try to upload changes to this file
+Finally you will need to run this in your console so that git won't try to upload changes to this file
 ```
 git update-index --skip-worktree gradle.properties
 ```
