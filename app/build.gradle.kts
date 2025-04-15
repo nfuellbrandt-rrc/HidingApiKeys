@@ -42,7 +42,12 @@ android {
         buildConfigField(
             type = "String",
             name = "API_KEY_FROM_GRADLE_PROPERTIES",
-            value = "$api_key_from_gradle_properties")
+            value = "$api_key_from_gradle_properties"
+        )
+
+        // for using api keys in the AndroidManifest.xml file
+        manifestPlaceholders["API_KEY_FOR_MANIFEST"] = project.findProperty("API_KEY_FROM_GRADLE_PROPERTTIES") ?: "no api key found"
+
     }
 
     buildTypes {
